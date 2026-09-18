@@ -9,6 +9,7 @@
 .internship-figure .band-photo img{object-fit:contain;object-position:center}
 .internship-figure:nth-child(2) .band-photo{background:#fff}
 .internship-figure figcaption{padding:13px 7px 9px;font:500 14px/1.6 var(--sans);color:var(--ink)}
+.internship-figure .figure-description{margin:7px 0 0;color:var(--muted);font:400 14px/1.65 var(--sans)}
 .figure-number{display:block;margin-bottom:4px;color:var(--muted);font:600 12px/1.5 var(--sans);letter-spacing:.06em}
 .internship-figure:focus-within{z-index:3;transform:translateY(-4px) rotate(0)}
 @media(hover:hover){.internship-figure:hover{z-index:3;transform:translateY(-5px) rotate(0);box-shadow:0 14px 28px #0003}.internship-figure .band-photo:hover{transform:none}}
