@@ -152,6 +152,13 @@ internship_gallery = '<section class="internship-gallery-section" aria-labelledb
 for i, (caption, alt, width, height) in enumerate([internship_figures[j] for j in (0, 2, 1, 3)], 1):
     image_path = f'assets/internships/project-{(1, 3, 2, 4)[i-1]:02d}.png'
     internship_gallery += f'<figure class="internship-figure"><a class="band-photo" href="{image_path}" target="_blank" rel="noopener noreferrer" aria-label="View figure {i}: {esc(caption)}"><img src="{image_path}" alt="{esc(alt)}" width="{width}" height="{height}" loading="lazy" decoding="async"></a><figcaption><span class="figure-number">Fig. {i}</span>{esc(caption)}</figcaption></figure>'
+internship_additional_figures = [
+    ('Pipeline Anomaly Recognition', 'An inspection workflow combining SAM 3.1 segmentation, YOLO transfer learning, and OCR-guided blurring for anomaly localization and privacy-aware visual processing.', 'Pipeline inspection results showing segmented anomalies identified with SAM 3.1 and YOLO transfer learning', 931, 663),
+    ('Water-Color Recognition & Pollution Detection', 'Water-body segmentation and water-color recognition for detecting floating solids and other visible pollution.', 'Segmented water body with highlighted regions of visible pollution and floating waste', 1920, 1080),
+]
+for i, (caption, description, alt, width, height) in enumerate(internship_additional_figures, 5):
+    image_path = f'assets/internships/project-{i:02d}.png'
+    internship_gallery += f'<figure class="internship-figure"><a class="band-photo" href="{image_path}" target="_blank" rel="noopener noreferrer" aria-label="View figure {i}: {esc(caption)}"><img src="{image_path}" alt="{esc(alt)}" width="{width}" height="{height}" loading="lazy" decoding="async"></a><figcaption><span class="figure-number">Fig. {i}</span><strong>{esc(caption)}</strong><span style="display:block;margin-top:7px;color:var(--muted);font-weight:400">{esc(description)}</span></figcaption></figure>'
 internship_gallery += '</div></section>'
 internship_gallery += '<dialog class="band-lightbox" aria-label="Internship project photo viewer"><div class="band-viewer"><button type="button" class="band-close" aria-label="Close photo viewer">Close ×</button><img class="band-full" alt=""><div class="band-controls"><button type="button" class="band-prev" aria-label="Previous photo">← Previous</button><span class="band-count" aria-live="polite"></span><button type="button" class="band-next" aria-label="Next photo">Next →</button></div></div></dialog>'
 
