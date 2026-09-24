@@ -7,12 +7,14 @@
 .band-frame:nth-child(2) img{object-position:50% 36%}
 .band-frame figcaption{padding:13px 7px 8px;font:500 14px/1.6 var(--sans);color:var(--ink)}
 .band-frame .figure-number{display:block;margin-bottom:4px;color:var(--muted);font:600 12px/1.5 var(--sans);letter-spacing:.06em}
-.personal-gallery{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:center;gap:18px}
-.personal-gallery .band-frame:first-child .band-photo{aspect-ratio:2/3}
-.personal-gallery .band-frame:nth-child(2) .band-photo{aspect-ratio:4/3}
+.personal-gallery{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;gap:18px}
+.personal-gallery .band-frame{display:flex;flex-direction:column}
+.personal-gallery .band-photo{height:clamp(220px,30vw,300px);aspect-ratio:auto;flex:none;background:#25282a}
+.personal-gallery .band-frame:first-child img{object-fit:contain;object-position:center}
 .personal-gallery .band-frame:nth-child(2) img{object-position:center}
+.personal-gallery .band-frame figcaption{flex:1}
 .band-frame:focus-within{z-index:4;transform:translateY(-5px) rotate(0)}
 @media(hover:hover){.band-frame:hover{z-index:4;transform:translateY(-7px) rotate(0);box-shadow:0 16px 32px #0004}.band-frame .band-photo:hover{transform:none}}
-@media(max-width:600px){.band-frame:nth-child(n){transform:rotate(-2deg)}.band-frame:nth-child(2n){transform:rotate(2deg)}.personal-gallery{grid-template-columns:1fr}.personal-gallery .band-frame:first-child{width:min(82%,320px);justify-self:center}}
+@media(max-width:600px){.band-frame:nth-child(n){transform:rotate(-2deg)}.band-frame:nth-child(2n){transform:rotate(2deg)}.personal-gallery{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.band-frame{transition:none}.band-frame:nth-child(n){transform:none}}
 @media print{.band-frame:nth-child(n){transform:none;box-shadow:none;break-inside:avoid}}
