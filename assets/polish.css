@@ -30,9 +30,9 @@
 @media print{.portfolio .reading-pane{padding:0}.portfolio .about-label{break-after:avoid}.portfolio .entry{padding:12px 0}}
 
 .portfolio .intro>p:not(.lead) + p{margin-top:18px}
-/* Portrait framing preserves the original photograph. */
+/* Portrait framing for the dedicated studio headshot. */
 .portfolio .portrait-frame{position:relative;overflow:hidden;width:100%;aspect-ratio:1 / 1.08;border-radius:8px;margin-bottom:22px;background:var(--surface)}
-.portfolio .portrait-frame .portrait{position:absolute;width:350%;max-width:none;height:auto;left:-110%;top:-90%;margin:0;border:0;border-radius:0;box-shadow:none}
+.portfolio .portrait-frame .portrait{position:absolute;width:100%;max-width:none;height:100%;left:0;top:0;margin:0;border:0;border-radius:0;box-shadow:none;object-fit:cover;object-position:center}
 .portfolio .menu-toggle{display:none}
 .portfolio .about-label{font-family:var(--serif);font-size:19px;font-weight:400;text-transform:none;letter-spacing:-.2px;line-height:1.5;margin-bottom:14px}
 .portfolio .page-heading h1{font-size:clamp(30px,3.2vw,42px);letter-spacing:-.8px;text-wrap:balance}
