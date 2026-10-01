@@ -21,6 +21,12 @@ def entry(title,meta,body='',tag='',links=[]):
 def section(id,num,title,body,intro=''):
     return f'<section id="{id}" class="section"><div class="section-heading"><span>{num}</span><h2>{title}</h2></div>'+ (f'<p class="section-intro">{intro}</p>' if intro else '')+body+'</section>'
 
+def gallery_thumbnails(markup):
+    """Use compact eager-loaded gallery previews while preserving full-size links."""
+    folders = r'(?:live-band|beyond-research|internships|publications|teaching|education)'
+    markup = re.sub(r'(<img src="assets/'+folders+r'/[^".]+)\.(?:jpg|jpeg|png)(")', r'\1-thumb.webp\2', markup)
+    return markup.replace('loading="lazy"', 'loading="eager"')
+
 papers=[
 dict(kind='Manuscript in preparation',title='LoRA-MAS: Trustworthy AI through Evidence-Governed Multi-Agent Reasoning',authors='Liao, C.-L., & Chen, L.-F.',venue='2026 · Planned submission to Omega – The International Journal of Management Science (SCIE/SSCI; JCR Q1) · Special Issue on Data-Enabled Analytics for Insightful and Responsible Decision-Making',note='',details=[
 'Developed an evidence-governed LoRA multi-agent framework with four QLoRA adapters and eight heterogeneous virtual experts, integrating human-in-the-loop evidence governance, provenance tracking, and confidence-aware AHP elicitation.',
@@ -204,6 +210,7 @@ for idx, (key, label, filename, title, content) in enumerate(page_specs):
     if key == 'about':
         main_content = '<div class="reading-pane">'+about+'</div>'+contact_section
     else:
+        content = gallery_thumbnails(content)
         page_heading = '<div class="page-heading"><p class="eyebrow">'+f'{idx:02d}'+' / '+label.upper()+'</p><h1>'+title+'</h1></div>'
         main_content = '<div class="reading-pane"><section id="'+key+'" class="topic-section">'+page_heading+content+'</section></div>'
     page_head = head.replace('<title>Chun-Lin Liao | Academic Portfolio</title>', '<title>'+label+' | Chun-Lin Liao</title>')
