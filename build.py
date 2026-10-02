@@ -22,9 +22,10 @@ def section(id,num,title,body,intro=''):
     return f'<section id="{id}" class="section"><div class="section-heading"><span>{num}</span><h2>{title}</h2></div>'+ (f'<p class="section-intro">{intro}</p>' if intro else '')+body+'</section>'
 
 def gallery_thumbnails(markup):
-    """Use compact eager-loaded gallery previews while preserving full-size links."""
+    """Use compact previews and optimized display images for gallery links."""
     folders = r'(?:live-band|beyond-research|internships|publications|teaching|education)'
     markup = re.sub(r'(<img src="assets/'+folders+r'/[^".]+)\.(?:jpg|jpeg|png)(")', r'\1-thumb.webp\2', markup)
+    markup = re.sub(r'(<a\b[^>]*\bhref="assets/'+folders+r'/[^".]+)\.(?:jpg|jpeg|png)(")', r'\1-view.webp\2', markup)
     return markup.replace('loading="lazy"', 'loading="eager"')
 
 papers=[
@@ -224,7 +225,7 @@ for idx, (key, label, filename, title, content) in enumerate(page_specs):
         page_head = page_head.replace('</head>', '<link rel="stylesheet" href="assets/internships/gallery.css?v=1"></head>')
     if key == 'leadership':
         page_head = page_head.replace('</head>', '<link rel="stylesheet" href="assets/live-band/captions.css?v=4"></head>')
-    (D/filename).write_text(page_head+'<body class="portfolio page-'+key+'"><a class="skip-link" href="#main">Skip to content</a>'+header+'<div class="layout">'+sidebar+'<main id="main">'+main_content+footer+'</main></div><script src="assets/site.js?v=3"></script></body></html>', encoding='utf-8')
+    (D/filename).write_text(page_head+'<body class="portfolio page-'+key+'"><a class="skip-link" href="#main">Skip to content</a>'+header+'<div class="layout">'+sidebar+'<main id="main">'+main_content+footer+'</main></div><script src="assets/site.js?v=4"></script></body></html>', encoding='utf-8')
 
 (D/'cv.html').write_text(head.replace('<title>Chun-Lin Liao | Academic Portfolio</title>','<title>Chun-Lin Liao | Curriculum Vitae</title>')+'<body class="cv-page"><div class="cv-toolbar"><a href="index.html">← Academic portfolio</a><button id="print-cv">Print / save as PDF</button>'+theme_control+'</div><main class="cv-document"><h1>Chun-Lin Liao</h1><p>Mechatronic Engineering · <a href="https://en.ntnu.edu.tw/aboutus.php" target="_blank" rel="noopener noreferrer">National Taiwan Normal University</a><br>Taipei, Taiwan</p><div class="cv-contact">'+contact+'</div><h2>Research interests</h2><p>Trustworthy Agentic AI and AI-Enabled Decision Systems, focusing on evidence-grounded reasoning, explainable and uncertainty-aware decision making, AIoT (Artificial Internet of Things), and real-world AI applications. I integrate AI with connected sensors, embedded systems, and edge devices for monitoring and decision making, with applications in healthcare, public infrastructure, and enterprise workflows.</p>'+sections+'</main><script src="assets/site.js?v=3"></script></body></html>',encoding='utf-8')
 (D/'assets'/'site.js').write_text('''const menuToggle = document.querySelector('.menu-toggle');
@@ -249,24 +250,46 @@ const bandDialog = document.querySelector('.band-lightbox');
 if (bandDialog && typeof bandDialog.showModal === 'function') {
   let bandIndex = 0;
   let bandOpener;
+  const fullImageCache = new Map();
   const fullImage = bandDialog.querySelector('.band-full');
   const count = bandDialog.querySelector('.band-count');
+  const preloadBandPhoto = index => {
+    const normalizedIndex = (index + bandLinks.length) % bandLinks.length;
+    if (!fullImageCache.has(normalizedIndex)) {
+      const image = new Image();
+      const loaded = new Promise(resolve => {
+        image.onload = () => resolve(image);
+        image.onerror = () => resolve(null);
+      });
+      image.src = bandLinks[normalizedIndex].href;
+      fullImageCache.set(normalizedIndex, loaded);
+    }
+    return fullImageCache.get(normalizedIndex);
+  };
   const showBandPhoto = index => {
     bandIndex = (index + bandLinks.length) % bandLinks.length;
     const source = bandLinks[bandIndex].querySelector('img');
-    fullImage.src = bandLinks[bandIndex].href;
+    const requestedIndex = bandIndex;
+    fullImage.src = source.currentSrc || source.src;
     fullImage.alt = source.alt;
     count.textContent = `${bandIndex + 1} / ${bandLinks.length}`;
+    preloadBandPhoto(bandIndex).then(image => {
+      if (image && bandIndex === requestedIndex) fullImage.src = image.src;
+    });
   };
-  bandLinks.forEach((link, index) => link.addEventListener('click', event => {
-    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
-    event.preventDefault();
-    bandOpener = link;
-    showBandPhoto(index);
-    bandDialog.showModal();
-    document.documentElement.classList.add('band-viewing');
-    bandDialog.querySelector('.band-close').focus();
-  }));
+  bandLinks.forEach((link, index) => {
+    link.addEventListener('pointerenter', () => preloadBandPhoto(index), {once:true});
+    link.addEventListener('focus', () => preloadBandPhoto(index), {once:true});
+    link.addEventListener('click', event => {
+      if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      bandOpener = link;
+      showBandPhoto(index);
+      bandDialog.showModal();
+      document.documentElement.classList.add('band-viewing');
+      bandDialog.querySelector('.band-close').focus();
+    });
+  });
   bandDialog.querySelector('.band-close').addEventListener('click', () => bandDialog.close());
   bandDialog.querySelector('.band-prev').addEventListener('click', () => showBandPhoto(bandIndex - 1));
   bandDialog.querySelector('.band-next').addEventListener('click', () => showBandPhoto(bandIndex + 1));
