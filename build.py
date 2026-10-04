@@ -99,7 +99,7 @@ experience=entry('AI Application Product R&D Engineer Intern','Octon Internation
 'Support LLM/RAG, NLP, and ASR-enabled customer-service workflows, including multi-format knowledge ingestion, semantic retrieval, speech recognition, and AI-assisted response generation.',
 '<strong>Project:</strong> Orion AI Orchestrator — a multi-agent backend collaboration platform for customer service at BankTaiwan Life Insurance.',
 '<strong>Project:</strong> Enterprise RAG solutions — FamilyMart.',
-'Invited by Prof. Charles Chan to join Octon after presenting my first-author lung-tumor segmentation research in his Artificial Intelligence and Life course.']),links=[('https://www.octon.net/zh/','Company website')])
+'Invited by Prof. Charles Chan to join Octon after presenting my first-author lung-tumor segmentation research in his Artificial Intelligence and Life course.']),links=[('https://www.octon.net/','Company website')])
 experience+=entry('Research Engineer Intern','Ucore Technology Inc. · Part-time · Taipei, Taiwan · October 2025 – Present (expected to end in January 2027)',bullets([
 'Develop and validate applied AI for public infrastructure and industrial environments, including computer vision, intelligent annotation, RAG, and multi-agent workflows.',
 '<strong>Project:</strong> AI Sewer Pipeline Anomaly Detection — Sewerage Systems Office.',
