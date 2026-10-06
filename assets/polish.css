@@ -102,7 +102,6 @@ html[data-theme="dark"] .portfolio .research-entry .entry-top h3{color:var(--ink
 .band-photo:nth-child(4){transform:translate(-5px,12px) rotate(-3deg)}
 .band-photo img{display:block;width:100%;height:100%;object-fit:cover;border-radius:2px}
 .band-photo:nth-child(2) img{object-position:50% 36%}
-.band-photo::after{content:'↗';position:absolute;right:14px;bottom:14px;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#10202acc;color:white;font:16px var(--sans)}
 .band-photo:focus-visible{outline:3px solid var(--accent);outline-offset:5px;z-index:4;transform:translateY(-5px) rotate(0)}
 @media(hover:hover){.band-photo:hover{z-index:4;transform:translateY(-7px) rotate(0) scale(1.025);box-shadow:0 16px 32px #0004}}
 .band-viewing{overflow:hidden}
@@ -118,7 +117,7 @@ html[data-theme="dark"] .portfolio .research-entry .entry-top h3{color:var(--ink
 @keyframes band-reveal{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:600px){.band-gallery{grid-template-columns:1fr;padding:14px 7px 25px;gap:14px}.band-photo{transform:rotate(-2deg)}.band-photo:nth-child(2n){transform:rotate(2deg)}.band-photo:nth-child(3){transform:rotate(-2deg)}.band-lightbox{padding:12px}.band-full{height:62dvh}.band-lightbox button{padding:8px 10px}}
 @media(prefers-reduced-motion:reduce){.band-photo,.band-lightbox[open]{animation:none!important;transition:none!important}}
-@media print{.band-gallery{gap:12px;padding:0}.band-photo:nth-child(n){transform:none;box-shadow:none}.band-photo::after,.band-lightbox{display:none!important}}
+@media print{.band-gallery{gap:12px;padding:0}.band-photo:nth-child(n){transform:none;box-shadow:none}.band-lightbox{display:none!important}}
 
 /* Allow the expanded name to wrap beside the theme selector on small screens. */
 .portfolio .masthead-inner .wordmark{white-space:normal;line-height:1.4}
