@@ -165,7 +165,7 @@ personal_gallery = '''<section class="band-gallery-section personal-gallery-sect
 
 internship_figures = [
     ('Real-Time Leak Detection with Optical Flow', 'Ongoing work: an autonomous inspection vehicle uses optical flow and RGB appearance cues from 2–5-second video segments to identify real-time leakage, flow direction, and flow speed.', 'Pipeline inspection view showing fused leak masks and residual optical flow for real-time leak detection', 1920, 580),
-    ('Binary Classification Training Results', 'Training-result visualizations used to compare classification outcomes, inspect error patterns, and support model evaluation for applied computer-vision tasks.', 'Binary classification training results comparing model outcomes in a twelve-panel plot', 945, 679),
+    ('A3-Assisted 3D Deformation & Subsidence Mapping', 'An A3-assisted multi-frame depth-fusion pipeline reconstructs sewer interiors as a unified triangulated 3D mesh, enabling spatial localization of suspected deformation and subsidence zones for condition assessment and cross-frame structural comparison.', 'A3-assisted 3D sewer reconstruction highlighting suspected deformation and subsidence zones in a fused triangular mesh', 1887, 900),
     ('Audit AI — Corporate Auditing System', 'A corporate auditing interface developed for structured document review, supporting the applied multi-agent workflow research conducted at Ucore.', 'Ucore Audit AI corporate auditing system login interface', 1917, 908),
     ('Edge Computing with Genio 1200', 'A Genio 1200 development platform used to explore edge deployment for computer vision, embedded sensing, and real-world AI applications.', 'Genio 1200 development board for edge computing', 917, 768),
 ]
