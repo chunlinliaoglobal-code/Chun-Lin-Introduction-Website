@@ -185,7 +185,7 @@ internship_gallery += '<dialog class="band-lightbox" aria-label="Internship proj
 
 
 publication_figures = [
-    ('A Conversation That Inspired My PhD Journey', 'Meeting Princeton professor Michael Littman at a conference in Hawaii. Our conversation about electromagnetism inspired me to pursue a PhD.', 'Conference photograph with Prof. Michael Littman in Hawaii', 2048, 1536),
+    ('A Conversation on Research and Graduate Study', 'Meeting Professor Michael Littman at a conference in Hawaii, where we had a brief conversation about graduate study and research paths.', 'Conference photograph with Prof. Michael Littman in Hawaii', 2048, 1536),
     ('Presenting Lung-Tumor Research', 'Poster presentation on lung-tumor segmentation at the Medical Quality Conference.', 'Lung-tumor segmentation poster presentation at the Medical Quality Conference', 1536, 2048),
     ('Agentic IoT Platform', 'System architecture integrating Spec-RAG, LLM-assisted parser generation, multimodal anomaly detection, and event-driven agent workflows.', 'Agentic IoT platform architecture diagram', 720, 402),
     ('Battery Operating-Window Study', 'Verified main effects on capacity retention and internal resistance from the L27 dataset (27,000 simulated observations). E represents the aging horizon, not an optimized BMS control variable.', 'Main-effects plots for charging current, discharging current, temperature, SOC, and aging horizon in the battery operating-window optimization study', 960, 526),
