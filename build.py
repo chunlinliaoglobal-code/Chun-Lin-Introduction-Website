@@ -90,7 +90,7 @@ publication_papers[2] = dict(
     kind='Manuscript in preparation',
     title='Traceable Spec-RAG for Evidence-Grounded Binary Parser Synthesis',
     authors='Liao, C.-L., Wu, C.-H., & Wu, S.-D.',
-    venue='Evidence-grounded binary parser synthesis',
+    venue='',
     note='The framework also serves as a core capability within an Agentic IoT platform, linking specification-grounded parser synthesis with intelligent data ingestion and downstream agent workflows.',
     details=[
         'Proposed a structure-aware, field-oriented Spec-RAG framework to convert heterogeneous, versioned protocol specifications into traceable binary parser schemas through structured evidence representation and field-specific retrieval.',
@@ -109,7 +109,10 @@ def render_publications(source, groups):
             detail = f'<p class="paper-note">{esc(p["note"])}</p>' if p['note'] else ''
             if p['details']:
                 detail += '<details><summary>Research contributions & results</summary>'+bullets([esc(x) for x in p['details']])+'</details>'
-            markup += entry(esc(p['title']), f'<strong>{esc(p["authors"])}</strong><br>{esc(p["venue"])}', detail, p['kind'], p['links'])
+            publication_meta = f'<strong>{esc(p["authors"])}</strong>'
+            if p['venue']:
+                publication_meta += f'<br>{esc(p["venue"])}'
+            markup += entry(esc(p['title']), publication_meta, detail, p['kind'], p['links'])
     return markup
 
 cv_pubs = render_publications(papers, [('Journal Papers',[0,1]),('Conference Papers & Presentations',[2,6,3,4,7,5])])
