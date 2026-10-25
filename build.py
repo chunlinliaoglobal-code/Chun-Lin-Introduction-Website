@@ -97,9 +97,9 @@ publication_papers[2] = dict(
     venue='',
     note='The framework also serves as a core capability within an Agentic IoT platform, linking specification-grounded parser synthesis with intelligent data ingestion and downstream agent workflows.',
     details=[
-        'Proposed a structure-aware, field-oriented Spec-RAG framework to convert heterogeneous, versioned protocol specifications into traceable binary parser schemas through structured evidence representation and field-specific retrieval.',
-        'Built an evidence pipeline with hybrid retrieval, protocol-version filtering, field-level coverage and conflict checks, provenance tracking, and no-evidence / bounded-repair mechanisms to prevent unsupported or cross-protocol parser generation.',
-        'Evaluated generated parsers on two related datalogger protocols using 10,000 synthetic frames, achieving 100% decoding correctness under controlled experimental conditions.',
+        'Designed a structure-aware specification-to-parser pipeline that preserves document topology and provenance, decomposes parser contracts into field-level retrieval tasks, and combines dense, BM25, and table retrieval with protocol-version, coverage, conflict, and no-evidence gates.',
+        'Introduced a typed parser-table representation with cell-level evidence links and a bounded validation-and-repair workflow, enabling byte-level review of offsets, lengths, endian rules, masks, scales, and units before code generation.',
+        'In a controlled benchmark spanning two related datalogger protocols and 10,000 simulated frames, achieved 100% target precision, schema exactness, strict balanced accuracy, and scalar accuracy under an 8,192-token per-call limit, while reducing average token usage by 37.8% and mean latency by 28.9% relative to vanilla RAG.',
     ],
     links=[],
 )
