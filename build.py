@@ -87,7 +87,7 @@ research+=research_entry('Agentic AI, RAG & Edge AI for Real-World Deployment','
 
 publication_papers = [dict(p) for p in papers]
 publication_papers[2] = dict(
-    kind='Research project · 2026',
+    kind='Manuscript in preparation',
     title='Traceable Spec-RAG for Evidence-Grounded Binary Parser Synthesis',
     authors='Liao, C.-L., Wu, C.-H., & Wu, S.-D.',
     venue='Evidence-grounded binary parser synthesis',
@@ -113,7 +113,7 @@ def render_publications(source, groups):
     return markup
 
 cv_pubs = render_publications(papers, [('Journal Papers',[0,1]),('Conference Papers & Presentations',[2,6,3,4,7,5])])
-pubs = render_publications(publication_papers, [('Journal Papers',[0,1]),('Research Projects',[2]),('Conference Papers & Presentations',[6,3,4,7,5])])
+pubs = render_publications(publication_papers, [('Journal Papers',[0,1]),('Conference Papers & Presentations',[2,6,3,4,7,5])])
 
 experience=entry('AI Application Product R&D Engineer Intern','Octon International Technology Corporation · Part-time · Taipei, Taiwan · August 2026 – Present',bullets([
 'Contribute to R&D and validation of Orion AI Orchestrator, an enterprise agentic AI platform covering agent selection, workflow control, tool routing, RAG, AI governance, and enterprise integration.',
