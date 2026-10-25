@@ -86,6 +86,10 @@ research+=research_entry('Market-Integrated CPS: A CSTAL-MoE Framework for Intel
 research+=research_entry('Agentic AI, RAG & Edge AI for Real-World Deployment','Research Assistant · Signal Processing Lab, NTNU · October 2025 – August 2026 · Advisor: Prof. Shuen-De Wu','<p>Industry–academia AIoT research integrating LLM-based agentic AI, retrieval-augmented generation, and Edge AI. Research areas include computer vision and embedded systems.</p>')
 
 publication_papers = [dict(p) for p in papers]
+publication_papers[0] = dict(
+    publication_papers[0],
+    venue='Planned submission to Omega – The International Journal of Management Science (SCIE/SSCI; JCR Q1) · Special Issue on Data-Enabled Analytics for Insightful and Responsible Decision-Making',
+)
 publication_papers[2] = dict(
     kind='Manuscript in preparation',
     title='Traceable Spec-RAG for Evidence-Grounded Binary Parser Synthesis',
