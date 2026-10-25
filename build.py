@@ -91,7 +91,7 @@ publication_papers[2] = dict(
     title='Traceable Spec-RAG for Evidence-Grounded Binary Parser Synthesis',
     authors='Liao, C.-L., Wu, C.-H., & Wu, S.-D.',
     venue='Evidence-grounded binary parser synthesis',
-    note='Current limitations: Evaluation is limited to two related datalogger protocols and synthetic data. Broader protocol generalization and real-world deployment remain to be validated.',
+    note='The framework also serves as a core capability within an Agentic IoT platform, linking specification-grounded parser synthesis with intelligent data ingestion and downstream agent workflows.',
     details=[
         'Proposed a structure-aware, field-oriented Spec-RAG framework to convert heterogeneous, versioned protocol specifications into traceable binary parser schemas through structured evidence representation and field-specific retrieval.',
         'Built an evidence pipeline with hybrid retrieval, protocol-version filtering, field-level coverage and conflict checks, provenance tracking, and no-evidence / bounded-repair mechanisms to prevent unsupported or cross-protocol parser generation.',
