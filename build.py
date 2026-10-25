@@ -85,14 +85,35 @@ research=research_entry('Explainable AI for Risk Assessment','Research Assistant
 research+=research_entry('Market-Integrated CPS: A CSTAL-MoE Framework for Intelligent Steel ESG Management','NSTC College Student Research Scholarship · July 1, 2026 – Present (expected to end on February 28, 2027) · Advisor: Prof. Li-Fei Chen','<p>Funded undergraduate research supported by the National Science and Technology Council (NSTC), Taiwan.</p>','Ongoing')
 research+=research_entry('Agentic AI, RAG & Edge AI for Real-World Deployment','Research Assistant · Signal Processing Lab, NTNU · October 2025 – August 2026 · Advisor: Prof. Shuen-De Wu','<p>Industry–academia AIoT research integrating LLM-based agentic AI, retrieval-augmented generation, and Edge AI. Research areas include computer vision and embedded systems.</p>')
 
-pubs=''
-for group,inds in [('Journal Papers',[0,1]),('Conference Papers & Presentations',[2,6,3,4,7,5])]:
-    pubs+=f'<h3 class="group-title">{group}</h3>'
-    for i in inds:
-        p=papers[i]
-        detail=f'<p class="paper-note">{esc(p["note"])}</p>' if p['note'] else ''
-        if p['details']: detail+='<details><summary>Research contributions & results</summary>'+bullets([esc(x) for x in p['details']])+'</details>'
-        pubs+=entry(esc(p['title']),f'<strong>{esc(p["authors"])}</strong><br>{esc(p["venue"])}',detail,p['kind'],p['links'])
+publication_papers = [dict(p) for p in papers]
+publication_papers[2] = dict(
+    kind='Research project · 2026',
+    title='Traceable Spec-RAG for Evidence-Grounded Binary Parser Synthesis',
+    authors='Liao, C.-L., Wu, C.-H., & Wu, S.-D.',
+    venue='Evidence-grounded binary parser synthesis',
+    note='Current limitations: Evaluation is limited to two related datalogger protocols and synthetic data. Broader protocol generalization and real-world deployment remain to be validated.',
+    details=[
+        'Proposed a structure-aware, field-oriented Spec-RAG framework to convert heterogeneous, versioned protocol specifications into traceable binary parser schemas through structured evidence representation and field-specific retrieval.',
+        'Built an evidence pipeline with hybrid retrieval, protocol-version filtering, field-level coverage and conflict checks, provenance tracking, and no-evidence / bounded-repair mechanisms to prevent unsupported or cross-protocol parser generation.',
+        'Evaluated generated parsers on two related datalogger protocols using 10,000 synthetic frames, achieving 100% decoding correctness under controlled experimental conditions.',
+    ],
+    links=[],
+)
+
+def render_publications(source, groups):
+    markup = ''
+    for group, inds in groups:
+        markup += f'<h3 class="group-title">{group}</h3>'
+        for i in inds:
+            p = source[i]
+            detail = f'<p class="paper-note">{esc(p["note"])}</p>' if p['note'] else ''
+            if p['details']:
+                detail += '<details><summary>Research contributions & results</summary>'+bullets([esc(x) for x in p['details']])+'</details>'
+            markup += entry(esc(p['title']), f'<strong>{esc(p["authors"])}</strong><br>{esc(p["venue"])}', detail, p['kind'], p['links'])
+    return markup
+
+cv_pubs = render_publications(papers, [('Journal Papers',[0,1]),('Conference Papers & Presentations',[2,6,3,4,7,5])])
+pubs = render_publications(publication_papers, [('Journal Papers',[0,1]),('Research Projects',[2]),('Conference Papers & Presentations',[6,3,4,7,5])])
 
 experience=entry('AI Application Product R&D Engineer Intern','Octon International Technology Corporation · Part-time · Taipei, Taiwan · August 2026 – Present',bullets([
 'Contribute to R&D and validation of Orion AI Orchestrator, an enterprise agentic AI platform covering agent selection, workflow control, tool routing, RAG, AI governance, and enterprise integration.',
@@ -125,7 +146,7 @@ professional = [professional[i] for i in [0,5,1,3,4,2]]
 education+='<h3 class="group-title">Training & professional activities</h3><ul class="activities">'+''.join(f'<li><span class="activity-date">{a}</span><div><strong>{b}</strong><p>{c}</p></div></li>' for a,b,c in professional)+'</ul>'
 leadership=entry('NTU Coconut Wind Rock Club','Keyboardist','<p>Performed on keyboards and contributed to band rehearsals, arrangements, and collaborative music projects.</p>')+entry('Taichung First Senior High School Hot Music Club','President & Keyboardist','<p>Led club operations and coordinated campus and off-campus performances, including rehearsal planning, scheduling, and team coordination.</p>')+entry('Table Tennis Team','Taichung First Senior High School','<p>Participated in regular team training and inter-school competitions.</p>')+entry('Music Production & Arrangement','Independent practice','<p>Self-taught Logic Pro, digital music production, arrangement, keyboard performance, and music programming tools, with experience producing and arranging original music projects.</p>')
 
-sections=section('research','01','Research experience',research)+section('publications','02','Publications & Presentations',pubs)+section('experience','03','Internships',experience)+section('teaching','04','Teaching & Mentoring',teaching)+section('education','05','Education & Training',education)+section('awards','06','Honors & Awards',awards)+section('leadership','07','Beyond Research',leadership)
+sections=section('research','01','Research experience',research)+section('publications','02','Publications & Presentations',cv_pubs)+section('experience','03','Internships',experience)+section('teaching','04','Teaching & Mentoring',teaching)+section('education','05','Education & Training',education)+section('awards','06','Honors & Awards',awards)+section('leadership','07','Beyond Research',leadership)
 contact='<a href="mailto:41373902h@gapps.ntnu.edu.tw">41373902h@gapps.ntnu.edu.tw</a><a href="mailto:chunlin.liao.global@gmail.com">chunlin.liao.global@gmail.com</a><a href="https://www.linkedin.com/in/chun-lin-liao-755b65386/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>'
 about='''<section id="about" class="intro"><h1>Chun-Lin Liao</h1><p class="lead">Trustworthy agentic AI.<br>Evidence-grounded decisions.</p><h2 class="about-label">Research focus</h2><p>I am an undergraduate researcher in Mechatronic Engineering at <a href="https://en.ntnu.edu.tw/aboutus.php" target="_blank" rel="noopener noreferrer">National Taiwan Normal University</a>, with an expected graduation date of June 2027. My research focuses on trustworthy agentic AI and AI-enabled decision systems, particularly evidence-grounded reasoning and explainable, uncertainty-aware decision making. I connect these interests to real-world AI applications through AIoT (Artificial Internet of Things), integrating AI models with sensors, embedded systems, and edge devices.</p><h2 class="about-label">Research mentorship</h2><p>I am currently advised by Prof. Li-Fei Chen and Prof. Shuen-De Wu. With Prof. Chen, I study machine learning, decision analytics, explainable AI, and mathematical modeling through research on AI-based risk assessment. With Prof. Wu in the Signal Processing Lab, I work on LLM-based agentic AI, retrieval-augmented generation (RAG), and Edge AI for real-world deployment, including computer vision and embedded systems.</p><h2 class="about-label">Current work</h2><p>My current research centers on <strong>LoRA-MAS: Trustworthy AI through Evidence-Governed Multi-Agent Reasoning</strong>, combining multi-agent reasoning with traceable evidence and uncertainty-aware decision making. Alongside this work, I am developing an <strong>agentic IoT platform</strong> that connects LLM-based agents, retrieval-augmented generation, and connected devices for real-world AI applications.</p><p>In a separate line of research, I have submitted <strong>Simulation-Based Operating-Window Optimization for Lithium-Ion Batteries Using Taguchi Design, Surrogate Modeling, and Multi-Algorithm Search</strong>, investigating battery operating conditions through simulation, surrogate modeling, and constrained optimization. A distinct NSTC-funded undergraduate project, <strong>Market-Integrated CPS: A CSTAL-MoE Framework for Intelligent Steel ESG Management</strong>, focuses on intelligent steel ESG management.</p><p>These research interests also inform my industry work: after I presented my first-author lung-tumor segmentation research in his Artificial Intelligence and Life course, <strong>Prof. Charles Chan invited me to join Octon</strong>. There, as an AI Application Product R&amp;D Engineer Intern, I contribute to <strong>Orion AI Orchestrator, a multi-agent backend collaboration platform for customer service at BankTaiwan Life Insurance</strong>, working on agent workflows and tool routing. In a separate project, I contribute to <strong>enterprise RAG solutions for FamilyMart</strong>, focusing on enterprise knowledge retrieval. At <strong>Ucore</strong>, my role as a Research Engineer Intern focuses on applied AI for public infrastructure, including computer vision for pipeline inspection, water-quality monitoring, occupational safety, and multi-agent document review.</p><div class="topic-list"><span>Agentic AI & RAG</span><span>Explainable decision systems</span><span>Edge AI & AIoT</span><span>Real-world AI applications</span></div><div class="intro-links"><a class="button" href="#publications">Explore my research <span aria-hidden="true">↓</span></a><a class="text-button" href="cv.html" target="_blank">View / print CV <span aria-hidden="true">↗</span></a></div></section>'''
 about = about.replace(
