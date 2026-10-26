@@ -181,6 +181,6 @@
     "Programming": "Python, C, MATLAB, Verilog HDL",
     "AI / ML": "PyTorch, CUDA, Computer Vision, LangChain, LangGraph",
     "Systems": "Linux, Git, Docker, FastAPI, MQTT",
-    "Embedded platforms": "Genio 1200, nRF54L15, Arduino, DE0-Nano FPGA"
+    "Embedded platforms": "Genio 1200, nRF54L15, ESP32, AMB82, Arduino, DE0-Nano FPGA"
   }
 }
